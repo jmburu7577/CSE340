@@ -1,11 +1,18 @@
 <nav class="site-nav" aria-label="Primary">
   <div class="container">
     <ul class="nav-list">
-      <li><a href="/" aria-current="page">Home</a></li>
-      <li><a href="#">Custom</a></li>
-      <li><a href="#">Sedan</a></li>
-      <li><a href="#">SUV</a></li>
-      <li><a href="#">Truck</a></li>
+      <li>
+        <a href="/" <%- activeSection === 'home' ? 'aria-current="page"' : '' %>>
+          Home
+        </a>
+      </li>
+      <% (classifications || []).forEach(function(c){ %>
+        <li>
+          <a href="/inv/classification/<%= c %>" <%- activeSection === c ? 'aria-current="page"' : '' %>>
+            <%= c.charAt(0).toUpperCase() + c.slice(1) %>
+          </a>
+        </li>
+      <% }) %>
     </ul>
   </div>
 </nav>
